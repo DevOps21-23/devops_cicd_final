@@ -38,6 +38,18 @@ jobs:
     - name: Build coverage report
       run: |
         coverage report tests/test_db.py
-        
+    - name: short git sha
+      uses: actions/checkout@v3
+      id: short-sha
+      with:
+        length: 6
+        -run: echo $SHA
+         env:
+           SHA: ${{ steps.short-sha.outputs.sha }}
+        -run: echo $SHA
+         env:
+          SHA: ${{ env.SHA }}
+          
+      
 
         
