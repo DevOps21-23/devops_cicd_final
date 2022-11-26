@@ -41,6 +41,10 @@ jobs:
     - name: Build coverage report
       run: |
         coverage report tests/test_db.py
+      uses: benjlevesque/short-sha@v2.1
+      id: short-sha
+      with:
+        length: 6
     - name: Docker build 
       run: |
         docker build -t devops_cicd_final/main:${{ github.sha }} .
