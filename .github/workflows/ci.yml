@@ -41,11 +41,11 @@ jobs:
     - name: Build coverage report
       run: |
         coverage report tests/test_db.py
-    - name: short git sha
-      uses: benjlevesque/short-sha@v2.1
-      id: short-sha
-      with:
-        length: 6
+    - name: Set short git commit SHA
+      id: vars
+      run: |
+        calculatedSha=$(git rev-parse --short ${{ github.sha }})
+        echo "::set-output name=short_sha::$calculatedSha"
     - name: Login to image repository
       uses: docker/login-action@v2
       with:
@@ -62,5 +62,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: ${{ env.REGISTRY }}/devops21-23/devops_cicd_final:${{ steps.vars.outputs.short_sha }}
         labels: ${{ steps.meta.outputs.lables }}
