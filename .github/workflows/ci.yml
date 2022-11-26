@@ -62,5 +62,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: devops_cicd_final/main
+        tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.lables }}
