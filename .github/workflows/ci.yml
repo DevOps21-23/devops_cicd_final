@@ -46,6 +46,11 @@ jobs:
       id: short-sha
       with:
         length: 6
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
     - name: Login to image repository
       uses: docker/login-action@v2
       with:
@@ -58,7 +63,4 @@ jobs:
         context: .
         push: true
         tags: ${{ steps.short-sha.outputs.sha }}
-        labels: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        
-
-        
+        labels: ${{ step.meta.outputs.lables }}
