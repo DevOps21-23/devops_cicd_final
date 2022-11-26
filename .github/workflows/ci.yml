@@ -41,6 +41,7 @@ jobs:
     - name: Build coverage report
       run: |
         coverage report tests/test_db.py
+    - name: short git sha
       uses: benjlevesque/short-sha@v2.1
       id: short-sha
       with:
