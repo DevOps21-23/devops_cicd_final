@@ -66,5 +66,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ env.REGISTRY }}/devops21-23/devops_cicd_final:${{ steps.extract_branch.outpus.branch }}-${{ steps.vars.outputs.short_sha }}
+        tags: ${{ env.REGISTRY }}/devops21-23/devops_cicd_final:${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.short_sha }}
         labels: ${{ steps.meta.outputs.lables }}
