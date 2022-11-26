@@ -1,0 +1,22 @@
+
+
+repos:
+-   repo: local
+    hooks:
+    -   id: test
+        name: run tests
+        entry: pytest
+        language: python
+        language_version: python3 
+        pass_filenames: false
+
+
+
+
+
+
+
+
+
+
+
