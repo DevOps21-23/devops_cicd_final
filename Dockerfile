@@ -3,7 +3,7 @@ FROM python:3.11-slim
 WORKDIR /app
 # First we copy the requirements.txt
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Then we copy the script just before its used, this allows the previous build to be cached
 COPY shop_app shop_app
