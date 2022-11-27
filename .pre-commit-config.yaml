@@ -1,18 +1,24 @@
 
 
 repos:
--   repo: local
-    hooks:
-    -   id: test
-        name: run tests
-        entry: pytest
-        language: python
-        language_version: python3 
-        pass_filenames: false
+# -   repo: local
+#     hooks:
+#     -   id: test
+#         name: run tests
+#         entry: pytest
+#         language: python
+#         language_version: python3 
+#         pass_filenames: false
 
-
-
-
+- repo: https://github.com/PyCQA/pylint
+  rev: v2.15.6
+  hooks:
+  - id: pylint
+  language: system
+  args:
+  - --max-line-length=120
+  - --output-format=colorized
+  - --errors-only
 
 
 
