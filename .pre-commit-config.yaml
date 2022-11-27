@@ -14,7 +14,7 @@ repos:
   rev: v2.15.6
   hooks:
   - id: pylint
-  language: system
+  language: python
   args:
   - --max-line-length=120
   - --output-format=colorized
