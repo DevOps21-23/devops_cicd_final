@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-server-pod
+  labels:
+    environment: test
+    app: farid-work-branch
+spec:
+  containers:
+  
+    - name: farid-work-branch
+      image: ghcr.io/faridhedayati/devops_cicd/my_flask:latest
+  imagePullSecrets:
+    - name: regcred
