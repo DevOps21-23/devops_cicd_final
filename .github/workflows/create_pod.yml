@@ -9,6 +9,6 @@ spec:
   containers:
   
     - name: farid-work-branch
-      image: ghcr.io/faridhedayati/devops_cicd/my_flask:latest
+      image: ghcr.io/cicd-project-final/farid-work-branch:main
   imagePullSecrets:
     - name: regcred
