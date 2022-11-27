@@ -1,18 +1,31 @@
 
 
 repos:
--   repo: local
-    hooks:
-    -   id: test
-        name: run tests
-        entry: pytest
-        language: python
-        language_version: python3 
-        pass_filenames: false
-
-
-
-
+- repo: local
+  hooks:
+  - id: pylint
+    name: pylint Shop App
+    entry: pylint ./shop_app
+    language: python
+    files: \.py$
+    args:
+        [
+          "--errors-only",
+          --output-format=colorized,
+          --max-line-length=120
+        ]
+  - id: pylint
+    name: pylint Tests
+    entry: pylint ./tests
+    language: python
+    files: \.py$
+    args:
+        [
+          "--errors-only",
+          --output-format=colorized,
+          --max-line-length=120
+        ]
+  
 
 
 
