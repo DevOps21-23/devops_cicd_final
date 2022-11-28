@@ -72,5 +72,5 @@ jobs:
     - name: Test service 
       run: |
         kubectl expose pod devops-cicd-final --selector "app=devops-cicd-final" --type=LoadBalancer --port=5000
-        kubectl get services flask-server-pod
-        minikube service flask-server-pod
+        kubectl get services devops-cicd-final
+        minikube service devops-cicd-final
