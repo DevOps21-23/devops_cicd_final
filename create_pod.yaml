@@ -6,7 +6,7 @@ metadata:
   labels:
     environment: test
     app: devops-cicd-final
-spec:
+  spec:
   containers:
   
     - name: devops-cicd-final

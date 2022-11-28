@@ -59,18 +59,3 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY }}/devops21-23/devops_cicd_final:latest
         labels: ${{ steps.meta.outputs.lables }}
-    - name: Start minikube
-      uses: medyagh/setup-minikube@master
-      with:
-        run: |
-          kubectl create secret docker-registry regcred --docker-server=ghcr.io --docker-username=${{ secrets.DOCKER_USER}} --docker-password=${{ secrets.DOCKER_PASSWORD }} --docker-email=fariddevops22@gmail.com
-    - name: Deploy to minikube
-      run:
-        kubectl apply -f .github/workflows/create_pod.yaml
-    - name: Try the cluster!
-      run: kubectl get pods -A  
-    - name: Test service 
-      run: |
-        kubectl expose pod devops-cicd-final --selector "app=devops-cicd-final" --type=LoadBalancer --port=5000
-        kubectl get services devops-cicd-final
-        minikube service devops-cicd-final
