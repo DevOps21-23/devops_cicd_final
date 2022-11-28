@@ -12,3 +12,5 @@ spec:
       image: ghcr.io/cicd-project-final/farid-work-branch:latest
   imagePullSecrets:
     - name: regcred
+      ports:
+       -containerPort: 88
