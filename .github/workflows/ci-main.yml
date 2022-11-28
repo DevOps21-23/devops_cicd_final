@@ -5,6 +5,7 @@ name: Python application
 
 on:
   push: 
+  pull_request:
     branches: [ main ]
 
 env:
