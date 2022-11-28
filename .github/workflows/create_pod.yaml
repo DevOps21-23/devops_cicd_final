@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: flask-server-pod
+  name: devops_cicd_final
   labels:
     environment: test
-    app: farid-work-branch
+    app: devops_cicd_final
 spec:
   containers:
   
-    - name: farid-work-branch
+    - name: devops_cicd_final
       image: ghcr.io/devops21-23/devops_cicd_final:latest
   imagePullSecrets:
     - name: regcred
