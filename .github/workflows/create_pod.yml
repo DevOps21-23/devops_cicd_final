@@ -13,4 +13,4 @@ spec:
   imagePullSecrets:
     - name: regcred
       ports:
-       -containerPort: 88
+       - containerPort: 88
