@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: devops_cicd_final
+  name: devops-cicd-final
   labels:
     environment: test
-    app: devops_cicd_final
+    app: devops-cicd-final
 spec:
   containers:
   
-    - name: devops_cicd_final
+    - name: devops-cicd-final
       image: ghcr.io/devops21-23/devops_cicd_final:latest
   imagePullSecrets:
     - name: regcred
