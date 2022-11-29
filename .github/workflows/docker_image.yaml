@@ -1,0 +1,49 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_DATABASE: example
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+      IMAGE_NAME: my_flask
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
+        ports:
+          - 3306:3306
+        options: --health-cmd "mysqladmin ping" --health-interval 15s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup & test DB
+        run: |
+          for sql_script in `ls ./sql/*.sql`;
+          do
+            echo "loading: $sql_script" 
+            mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD -D$MYSQL_DATABASE < $sql_script;
+          done
+          mysql --version
+          mysql -h$MYSQL_HOST -D$MYSQL_DATABASE -u$MYSQL_USER -p$MYSQL_PASSWORD -e 'select * from products;'
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}
+      - name: Run flask server
+        run: docker run --network host -d -e MYSQL_HOST=${{ env.MYSQL_HOST }} -e MYSQL_PASSWORD=$MYSQL_PASSWORD -p 5000:5000 ${{ env.IMAGE_NAME }}
+      - name: Pytest
+        run: |
+          pip install -r requirements.txt
+          pytest tests/integration
