@@ -6,11 +6,10 @@ metadata:
   labels:
     environment: test
     app: devops-cicd-final
-  spec:
+spec:
   containers:
-  
     - name: devops-cicd-final
       image: ghcr.io/devops21-23/devops_cicd_final:latest
-  imagePullSecrets:
-    - name: regcred
+  # imagePullSecrets:
+   # - name: regcred
 
