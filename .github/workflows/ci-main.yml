@@ -68,7 +68,7 @@ jobs:
 
     - name: Deploy to minikube
       run: |
-        kubectl apply -f .github/workflows/create_pod.yaml
+        kubectl apply -f create_pod.yaml
     - name: Try the cluster!
       run: kubectl get pods -A
     - name: Test service
