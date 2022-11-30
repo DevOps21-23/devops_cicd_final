@@ -39,7 +39,7 @@ jobs:
         pytest tests/unit
     - name: Build coverage report
       run: |
-        pytest --cov=shop_app --cov-branch tests
+        pytest --cov=shop_app --cov-branch tests/unit
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
