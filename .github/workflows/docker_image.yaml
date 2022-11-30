@@ -14,7 +14,7 @@ jobs:
       MYSQL_DATABASE: example
       MYSQL_USER: username
       MYSQL_PASSWORD: password
-      IMAGE_NAME: devops-cicd-final
+      IMAGE_NAME: devops_cicd_final
 
     services:
       mysql:
