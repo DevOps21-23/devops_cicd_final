@@ -34,5 +34,5 @@ jobs:
         pytest
     - name: Build coverage report
       run: |
-        coverage report tests/test_db.py
+        coverage report tests/unittest/test_db.py
 
