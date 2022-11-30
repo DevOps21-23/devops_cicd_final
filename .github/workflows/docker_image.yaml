@@ -46,4 +46,4 @@ jobs:
       - name: Pytest
         run: |
           pip install -r requirements.txt
-          pytest tests/integration
+          pytest tests/integrationtest
