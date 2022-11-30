@@ -34,5 +34,5 @@ jobs:
         pytest tests/unit
     - name: Build coverage report
       run: |
-        coverage report tests/unit
+        pytest --cov=shop_app --cov-branch tests/unit
 
