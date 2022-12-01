@@ -14,3 +14,4 @@ repos:
           --output-format=colorized,
           --max-line-length=120
         ]
+#
